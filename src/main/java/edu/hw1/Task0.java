@@ -14,6 +14,7 @@ public final class Task0 {
      *
      * @param args Аргументы командной строки.
      */
+    @SuppressWarnings("checkstyle:UncommentedMain")
     public static void main(String[] args) {
         LOGGER.info("Привет, мир!");
     }

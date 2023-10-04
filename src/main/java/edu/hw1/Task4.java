@@ -3,7 +3,10 @@ package edu.hw1;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Task4 {
+public final class Task4 {
+    private Task4() {
+    }
+
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static void main(String[] args) {
@@ -16,8 +19,9 @@ public class Task4 {
             stringBuilder.append(input.charAt(i + 1));
             stringBuilder.append(input.charAt(i));
         }
-        if (input.length() != stringBuilder.length())
+        if (input.length() != stringBuilder.length()) {
             stringBuilder.append(input.charAt(input.length() - 1));
+        }
         return stringBuilder;
     }
 }

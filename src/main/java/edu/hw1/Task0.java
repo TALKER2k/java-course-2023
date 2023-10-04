@@ -9,12 +9,7 @@ public final class Task0 {
 
     private final static Logger LOGGER = LogManager.getLogger();
 
-    /**
-     * Главный метод, который запускает приложение.
-     *
-     * @param args Аргументы командной строки.
-     */
-    @SuppressWarnings("checkstyle:UncommentedMain")
+    @SuppressWarnings(value = "checkstyle:UncommentedMain")
     public static void main(String[] args) {
         LOGGER.info("Привет, мир!");
     }

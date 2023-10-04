@@ -9,6 +9,7 @@ public final class Task4 {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
+    @SuppressWarnings("checkstyle:UncommentedMain")
     public static void main(String[] args) {
         LOGGER.info(fixString("a"));
     }

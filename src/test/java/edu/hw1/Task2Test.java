@@ -1,10 +1,10 @@
 package edu.hw1;
 
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task2Test {
+    @SuppressWarnings("checkstyle:MagicNumber")
     @Test
     void positiveNumberTest() {
         int number1 = 4060;
@@ -17,6 +17,7 @@ public class Task2Test {
         assertThat(resultCount2).isEqualTo(3);
     }
 
+    @SuppressWarnings("checkstyle:MagicNumber")
     @Test
     void negativeNumberTest() {
         int number1 = -4000;

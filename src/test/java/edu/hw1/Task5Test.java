@@ -1,11 +1,11 @@
 package edu.hw1;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task5Test {
+    @SuppressWarnings("checkstyle:MagicNumber")
     @Test
     void testIsNumberPalindrome() {
         int number1 = 121;
@@ -27,6 +27,7 @@ public class Task5Test {
         assertTrue(result5);
     }
 
+    @SuppressWarnings("checkstyle:MagicNumber")
     @Test
     void testHasPalindromeDescendant() {
         assertTrue(Task5.isPalindromeDescendant(13001120));

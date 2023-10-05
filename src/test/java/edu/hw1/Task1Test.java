@@ -1,11 +1,11 @@
 package edu.hw1;
 
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task1Test {
 
+    @SuppressWarnings("checkstyle:MagicNumber")
     @Test
     void timeOfFilmTest() {
         // given

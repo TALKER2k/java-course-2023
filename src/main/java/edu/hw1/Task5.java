@@ -35,7 +35,7 @@ public final class Task5 {
         return false;
     }
 
-    public static boolean isPalindrome(int number) {
+    private static boolean isPalindrome(int number) {
         return number == reverseNumber(number);
     }
 

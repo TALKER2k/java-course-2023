@@ -12,18 +12,25 @@ public final class Task3 {
 
     @SuppressWarnings({"checkstyle:UncommentedMain", "checkstyle:MagicNumber"})
     public static void main(String[] args) {
-        int[] a1 = new int[]{1, 2, 3, 4};
-        int[] a2 = new int[]{0, 6};
-        LOGGER.info(isNestable(a1, a2));
+        int[] array = new int[]{0, 6};
+        LOGGER.info(isNestable(null, array));
     }
 
     public static boolean isNestable(int[] a1, int[] a2) {
-        Arrays.sort(a1);
-        Arrays.sort(a2);
-        if (a1.length == 0 || a2.length == 0) {
+        try {
+            if (a1 == null || a2 == null) {
+                throw new NullPointerException("Array is NULL!");
+            }
+            Arrays.sort(a1);
+            Arrays.sort(a2);
+            if (a1.length == 0 || a2.length == 0) {
+                return false;
+            } else {
+                return (a1[0] > a2[0] && a1[a1.length - 1] < a2[a2.length - 1]);
+            }
+        } catch (NullPointerException e) {
+            LOGGER.info("Exeption " + e.getMessage());
             return false;
-        } else {
-            return (a1[0] > a2[0] && a1[a1.length - 1] < a2[a2.length - 1]);
         }
     }
 }

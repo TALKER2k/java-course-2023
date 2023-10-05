@@ -36,4 +36,17 @@ public class Task3Test {
 
         assertFalse(result);
     }
+
+    @SuppressWarnings("checkstyle:MagicNumber")
+    @Test
+    void badArraysTest() {
+        int[] a1 = new int[]{2, 3};
+        int[] a2 = new int[0];
+
+        boolean result1 = Task3.isNestable(null, a1);
+        boolean result2 = Task3.isNestable(a2, a2);
+
+        assertFalse(result1);
+        assertFalse(result2);
+    }
 }

@@ -1,17 +1,7 @@
 package edu.hw1;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public final class Task4 {
     private Task4() {
-    }
-
-    private static final Logger LOGGER = LogManager.getLogger();
-
-    @SuppressWarnings("checkstyle:UncommentedMain")
-    public static void main(String[] args) {
-        LOGGER.info(fixString("a"));
     }
 
     public static StringBuilder fixString(String input) {

@@ -1,19 +1,7 @@
 package edu.hw1;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-
 public final class Task2 {
     private Task2() {
-    }
-
-    private static final Logger LOGGER = LogManager.getLogger();
-
-    @SuppressWarnings("checkstyle:UncommentedMain")
-    public static void main(String[] args) {
-        final int num = 4666;
-        LOGGER.info(countDigits(num));
     }
 
     @SuppressWarnings("checkstyle:MagicNumber")

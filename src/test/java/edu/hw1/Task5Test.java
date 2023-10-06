@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class Task5Test {
     @SuppressWarnings("checkstyle:MagicNumber")
     @Test
-    void testIsNumberPalindrome() {
+    void isNumberPalindromeTest() {
         int number1 = 121;
         int number2 = 1331;
         int number3 = 12345;
@@ -29,7 +29,7 @@ public class Task5Test {
 
     @SuppressWarnings("checkstyle:MagicNumber")
     @Test
-    void testHasPalindromeDescendant() {
+    void hasPalindromeDescendantTest() {
         assertTrue(Task5.isPalindromeDescendant(13001120));
         assertTrue(Task5.isPalindromeDescendant(23336014));
         assertTrue(Task5.isPalindromeDescendant(11211230));

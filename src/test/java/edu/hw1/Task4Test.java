@@ -7,10 +7,13 @@ public class Task4Test {
     @Test
     void withEvenLengthTest() {
         String input = "123456";
+        String input2 = "hTsii  s aimex dpus rtni.g";
 
         StringBuilder result = Task4.fixString(input);
+        StringBuilder result2 = Task4.fixString(input2);
 
         assertEquals("214365", result.toString());
+        assertEquals("This is a mixed up string.", result2.toString());
     }
 
     @Test

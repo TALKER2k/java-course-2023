@@ -1,19 +1,9 @@
 package edu.hw1;
 
 import java.util.Arrays;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public final class Task6 {
     private Task6() {
-    }
-
-    private static final Logger LOGGER = LogManager.getLogger();
-
-    @SuppressWarnings("checkstyle:UncommentedMain")
-    public static void main(String[] args) {
-        final int number = 6554;
-        LOGGER.info(countK(number));
     }
 
     @SuppressWarnings("checkstyle:MagicNumber")

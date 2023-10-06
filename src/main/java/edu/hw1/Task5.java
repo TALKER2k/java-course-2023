@@ -1,19 +1,7 @@
 package edu.hw1;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public final class Task5 {
-    private static final Logger LOGGER = LogManager.getLogger();
-
     private Task5() {
-    }
-
-    @SuppressWarnings({"checkstyle:UncommentedMain", "checkstyle:MagicNumber"})
-    public static void main(String[] args) {
-        LOGGER.info(isPalindromeDescendant(123312));
-        LOGGER.info(isPalindromeDescendant(431));
-        LOGGER.info(isPalindromeDescendant(0));
     }
 
     @SuppressWarnings("checkstyle:MagicNumber")

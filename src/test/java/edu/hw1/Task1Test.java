@@ -7,7 +7,7 @@ public class Task1Test {
 
     @SuppressWarnings("checkstyle:MagicNumber")
     @Test
-    void timeOfFilmTest() {
+    void correctTimeOfFilmTest() {
         // given
         String time1 = "01:00";
         String time2 = "13:56";
@@ -40,5 +40,28 @@ public class Task1Test {
         assertThat(resultTime1).isEqualTo(-1);
         assertThat(resultTime2).isEqualTo(-1);
         assertThat(resultTime3).isEqualTo(-1);
+    }
+
+    @Test
+    void emptyTimeOfFilmTest() {
+        // given
+        String time = "";
+
+        // when
+        int resultTime = Task1.minutesToSeconds(time);
+
+        // then
+        assertThat(resultTime).isEqualTo(-1);
+    }
+
+    @Test
+    void nullTimeOfFilmTest() {
+        // given
+
+        // when
+        int resultTime1 = Task1.minutesToSeconds(null);
+
+        // then
+        assertThat(resultTime1).isEqualTo(-1);
     }
 }

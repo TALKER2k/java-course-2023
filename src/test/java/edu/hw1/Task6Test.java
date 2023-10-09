@@ -20,4 +20,16 @@ public class Task6Test {
         assertThat(result2).isEqualTo(4);
         assertThat(result3).isEqualTo(3);
     }
+
+    @Test
+    void badNumberCountKTest() {
+        final int number1 = 100;
+        final int number2 = 10000;
+
+        final int result1 = Task6.countK(number1);
+        final int result2 = Task6.countK(number2);
+
+        assertThat(result1).isEqualTo(0);
+        assertThat(result2).isEqualTo(0);
+    }
 }

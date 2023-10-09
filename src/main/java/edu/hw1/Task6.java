@@ -8,6 +8,9 @@ public final class Task6 {
 
     @SuppressWarnings("checkstyle:MagicNumber")
     public static int countK(int number) {
+        if (number < 1000 || number > 9999) {
+            return 0;
+        }
         final int kaprekar = 6174;
         if (number == kaprekar) {
             return 0;

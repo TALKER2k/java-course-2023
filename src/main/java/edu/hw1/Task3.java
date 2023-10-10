@@ -11,12 +11,8 @@ public final class Task3 {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static boolean isNestable(int[] a1, int[] a2) {
-        try {
-            if (a1 == null || a2 == null) {
-                throw new NullPointerException("Array is NULL!");
-            }
-        } catch (NullPointerException e) {
-            LOGGER.info("Exeption " + e.getMessage());
+        if (a1 == null || a2 == null) {
+            LOGGER.info("Array is NULL");
             return false;
         }
         Arrays.sort(a1);

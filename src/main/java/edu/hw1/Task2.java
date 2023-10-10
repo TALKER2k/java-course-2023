@@ -6,11 +6,11 @@ public final class Task2 {
 
     @SuppressWarnings("checkstyle:MagicNumber")
     public static int countDigits(int number) {
-        int temp = number;
-        int count = 0;
-        if (temp == 0) {
+        if (number == 0) {
             return 1;
         }
+        int temp = number;
+        int count = 0;
         while (Math.abs(temp) > 0) {
             temp /= 10;
             count++;

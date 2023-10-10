@@ -9,23 +9,19 @@ public final class Task1 {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static int minutesToSeconds(String time) {
-        try {
-            if (time == null) {
-                throw new NullPointerException("String is NULL!");
-            }
-            if (time.isEmpty()) {
-                return -1;
-            }
-        } catch (NullPointerException e) {
-            LOGGER.info(e.getMessage());
+        if (time == null) {
+            LOGGER.info("Time is NULL!");
             return -1;
         }
-        final int num = 60;
+        if (time.isEmpty()) {
+            return -1;
+        }
+        final int maxSeconds = 60;
         int afterInt = Integer.parseInt(time.substring(time.indexOf(":") + 1));
         int beforeInt = Integer.parseInt(time.substring(0, time.indexOf(":")));
-        if (afterInt >= num || afterInt < 0 || beforeInt < 0) {
+        if (afterInt >= maxSeconds || afterInt < 0 || beforeInt < 0) {
             return -1;
         }
-        return beforeInt * num + afterInt;
+        return beforeInt * maxSeconds + afterInt;
     }
 }

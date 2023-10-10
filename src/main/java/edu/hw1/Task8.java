@@ -11,12 +11,8 @@ public final class Task8 {
 
     @SuppressWarnings("checkstyle:MagicNumber")
     public static boolean knightBoardCapture(int[][] board) {
-        try {
-            if (board == null) {
-                throw new NullPointerException("Board is NULL!");
-            }
-        } catch (NullPointerException e) {
-            LOGGER.info(e.getMessage());
+        if (board == null) {
+            LOGGER.info("Board is NULL!");
             return false;
         }
         int[] firstStep = {2, 2, -2, -2, 1, 1, -1, -1};

@@ -6,9 +6,11 @@ public final class Main {
     }
 
     public static void main(String[] args) {
+        final int maxAttempts = 5;
+        final int userAttempts = 0;
         ConsoleHangman consoleHangman = new ConsoleHangman();
-        Session session = new Session("d", null, 5,
-                new GuessResult(0, ""));
+        Session session = new Session("", null, maxAttempts,
+                new GuessResult(userAttempts, ""));
         consoleHangman.run(session);
     }
 }

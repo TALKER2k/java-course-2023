@@ -4,7 +4,7 @@ public class Session {
     private String answer;
     private char[] userAnswer;
     private final int maxAttempts;
-    private GuessResult userResult;
+    private final GuessResult userResult;
 
     public Session(String answer, char[] userAnswer, int maxAttempts, GuessResult userResult) {
         this.answer = answer;

@@ -7,6 +7,8 @@ public final class Main {
 
     public static void main(String[] args) {
         ConsoleHangman consoleHangman = new ConsoleHangman();
-        consoleHangman.run();
+        Session session = new Session("d", null, 5,
+                new GuessResult(0, ""));
+        consoleHangman.run(session);
     }
 }

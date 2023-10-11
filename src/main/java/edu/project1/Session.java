@@ -1,16 +1,16 @@
 package edu.project1;
 
 public class Session {
-    private final String answer;
+    private String answer;
     private char[] userAnswer;
     private final int maxAttempts;
-    private int userAttempts;
+    private GuessResult userResult;
 
-    public Session(String answer, char[] userAnswer, int maxAttempts, int userAttempts) {
+    public Session(String answer, char[] userAnswer, int maxAttempts, GuessResult userResult) {
         this.answer = answer;
         this.userAnswer = userAnswer;
         this.maxAttempts = maxAttempts;
-        this.userAttempts = userAttempts;
+        this.userResult = userResult;
     }
 
     public char[] getUserAnswer() {
@@ -21,16 +21,16 @@ public class Session {
         this.userAnswer = userAnswer;
     }
 
-    public int getUserAttempts() {
-        return userAttempts;
+    public GuessResult getUserResult() {
+        return userResult;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     public int getMaxAttempts() {
         return maxAttempts;
-    }
-
-    public void setUserAttempts(int userAttempts) {
-        this.userAttempts = userAttempts;
     }
 
     public String getAnswer() {

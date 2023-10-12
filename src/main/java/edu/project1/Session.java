@@ -1,12 +1,15 @@
 package edu.project1;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Session {
+    @NotNull
     private String answer;
     private char[] userAnswer;
     private final int maxAttempts;
     private final GuessResult userResult;
 
-    public Session(String answer, char[] userAnswer, int maxAttempts, GuessResult userResult) {
+    public Session(@NotNull String answer, char[] userAnswer, int maxAttempts, GuessResult userResult) {
         this.answer = answer;
         this.userAnswer = userAnswer;
         this.maxAttempts = maxAttempts;
@@ -25,7 +28,7 @@ public class Session {
         return userResult;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(@NotNull String answer) {
         this.answer = answer;
     }
 
@@ -33,7 +36,7 @@ public class Session {
         return maxAttempts;
     }
 
-    public String getAnswer() {
+    public @NotNull String getAnswer() {
         return answer;
     }
 }

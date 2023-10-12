@@ -73,12 +73,13 @@ public class Project1Test {
                 .isEqualTo(RESULT_WINNER);
     }
 
-    @SuppressWarnings("checkstyle:MagicNumber")
     @Test
     void largeStringLoserTest() {
         ConsoleHangman consoleHangman = new ConsoleHangman();
-        Session session = new Session(WORD_FOR_TEST, null, 5,
-                new GuessResult(0, ""));
+        final int maxAttempts = 5;
+        final int userAttempts = 0;
+        Session session = new Session(WORD_FOR_TEST, null, maxAttempts,
+                new GuessResult(userAttempts, ""));
         String input = "h\ne\nddd\ndd\nl\nl\nd\nd\nd\nd\nd\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 

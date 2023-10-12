@@ -23,7 +23,7 @@ class ConsoleHangman implements Dictionary {
         if (session.getAnswer().length() >= 50 || session.getAnswer().length() == 1) {
             return;
         }
-        if ("".equals(session.getAnswer())) {
+        if (session.getAnswer().isEmpty()) {
             session.setAnswer(randomWord(WORDS_FOR_GUESS));
         }
         LOGGER.info("Welcome to the game Hangman");

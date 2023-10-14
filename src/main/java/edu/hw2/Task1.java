@@ -1,13 +1,8 @@
 package edu.hw2;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public final class Task1 {
     private Task1() {}
-
-    private static final Logger LOGGER = LogManager.getLogger();
 
     public sealed interface Expr {
         double evaluate();

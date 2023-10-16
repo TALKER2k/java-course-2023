@@ -13,12 +13,12 @@ public class Task2Test {
         };
     }
 
+    @SuppressWarnings("checkstyle:MagicNumber")
     @ParameterizedTest
     @MethodSource("rectangles")
     void rectangleArea(Task2.Rectangle rect) {
         Task2.Rectangle resultRect = rect.setWidth(20);
         resultRect = resultRect.setHeight(10);
-        System.out.println(resultRect.getHeight() + " " + resultRect.getWidth());
         assertThat(resultRect.area()).isEqualTo(200.0);
     }
 }

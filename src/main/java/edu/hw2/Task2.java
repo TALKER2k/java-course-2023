@@ -38,18 +38,14 @@ public final class Task2 {
     public static class Square extends Rectangle {
         public Square() {}
 
-        public Square(int size) {
-            super(size, size);
-        }
-
         @Override
         public Rectangle setHeight(int height) {
-            return new Rectangle(height, height);
+            return new Rectangle(getWidth(), height);
         }
 
         @Override
         public Rectangle setWidth(int width) {
-            return new Rectangle(width, width);
+            return new Rectangle(width, getHeight());
         }
     }
 }

@@ -12,7 +12,7 @@ public class Task5Test {
         int number2 = 1331;
         int number3 = 12345;
         int number4 = 123;
-        int number5 = 11;
+        int number5 = 9765;
 
         boolean result1 = Task5.isPalindromeDescendant(number1);
         boolean result2 = Task5.isPalindromeDescendant(number2);
@@ -24,7 +24,7 @@ public class Task5Test {
         assertTrue(result2);
         assertFalse(result3);
         assertTrue(result4);
-        assertTrue(result5);
+        assertFalse(result5);
     }
 
     @SuppressWarnings("checkstyle:MagicNumber")

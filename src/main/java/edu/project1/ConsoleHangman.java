@@ -1,78 +1,75 @@
 package edu.project1;
 
-import java.util.Random;
-import java.util.Scanner;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
+import static edu.project1.Dictionary.WORDS_FOR_GUESS;
+import static edu.project1.Dictionary.WORDS_FOR_SUCCESSFUL_GUESSING;
 
-class ConsoleHangman implements Dictionary {
+final class ConsoleHangman {
+    private static final int MAX_LENGTH = 50;
 
-    private static final Logger LOGGER = LogManager.getLogger();
-
-    public static final String[] WORDS_FOR_GUESS = {"black", "hello", "banana", "pineapple", "pigeon"};
-
-    private static final String[] WORDS_FOR_SUCCESSFUL_GUESSING = {"Hit", "Great", "Nice", "Well done"};
-
-    public @NotNull String randomWord(String[] stringsArray) {
-        return stringsArray[new Random().nextInt(stringsArray.length)];
-    }
-
-    @SuppressWarnings("checkstyle:MagicNumber")
     public void run(Session session) {
-        if (session.getAnswer().length() >= 50 || session.getAnswer().length() == 1) {
+        HangmanIO hangmanIO = new HangmanIO();
+        if (session.getAnswer().length() >= MAX_LENGTH || session.getAnswer().length() == 1) {
+            hangmanIO.displayMessage("Too big a word!");
             return;
         }
+
         if (session.getAnswer().isEmpty()) {
-            session.setAnswer(randomWord(WORDS_FOR_GUESS));
+            session.setAnswer(ListUtils.randomWord(WORDS_FOR_GUESS));
         }
-        LOGGER.info("Welcome to the game Hangman");
-        StringBuilder encryptedWord = new StringBuilder(session.getAnswer().replaceAll("[a-zA-Z]", "*"));
-        Scanner scanner = new Scanner(System.in);
-        while (session.getMaxAttempts() - session.getUserResult().getUserAttempts() > 0
-                && encryptedWord.indexOf("*") != -1) {
-            LOGGER.info("You can say \"quit\" to given up");
-            LOGGER.info("The word: " + encryptedWord);
-            LOGGER.info("Guess a letter:");
-            char[] charInput = scanner.nextLine().toCharArray();
-            if (charInput.length != 1) {
-                if ("quit".equals(String.valueOf(charInput))) {
-                    LOGGER.info("You've given up.");
-                    break;
-                }
-                LOGGER.info("Not correct! Try again!");
-                continue;
-            } else {
-                session.setUserAnswer(charInput);
+
+        hangmanIO.displayMessage("Welcome to the game Hangman");
+        StringBuilder encryptedWord = new StringBuilder(session.getAnswer());
+        encryptedAnswer(encryptedWord);
+
+        while (session.isActiveSession() && encryptedWord.indexOf("*") != -1) {
+            hangmanIO.displayMessage("You can say \"quit\" to given up");
+            hangmanIO.displayMessage("The word: " + encryptedWord);
+            hangmanIO.displayMessage("Guess a letter:");
+            char[] charInput = hangmanIO.charInput(hangmanIO.getScanner());
+            if ("quit".equals(String.valueOf(charInput))) {
+                hangmanIO.displayMessage("You've given up.");
+                break;
             }
-            if (session.getAnswer().contains(String.valueOf(session.getUserAnswer()))) {
-                LOGGER.info(randomWord(WORDS_FOR_SUCCESSFUL_GUESSING));
-                for (int i = 0; i < encryptedWord.length(); i++) {
-                    if (session.getAnswer().charAt(i) == session.getUserAnswer()[0]) {
-                        encryptedWord.setCharAt(i, session.getAnswer().charAt(i));
-                    }
-                }
-            } else {
-                session.getUserResult().setUserAttempts(session.getUserResult().getUserAttempts() + 1);
-                LOGGER.info("Missed, mistake "
-                        + session.getUserResult().getUserAttempts()
-                        + " out of "
-                        + session.getMaxAttempts() + ".");
-            }
+
+            session.setUserAnswer(charInput);
+            openWordForUser(session, encryptedWord);
         }
-        LOGGER.info("The hidden word was - " + session.getAnswer());
+
+        hangmanIO.displayMessage("The hidden word was - " + session.getAnswer());
+
         if (encryptedWord.indexOf("*") == -1) {
             String resultMessage = "You won! :)";
             session.getUserResult().setResultMessage(resultMessage);
-            LOGGER.info(new Win(resultMessage).text);
+            hangmanIO.displayMessage(new Win(resultMessage).text());
         } else {
             String resultMessage = "You lost! :(";
             session.getUserResult().setResultMessage(resultMessage);
-            LOGGER.info(new Defeat(resultMessage).text);
+            hangmanIO.displayMessage(new Defeat(resultMessage).text());
+        }
+        hangmanIO.close();
+    }
+
+    public void encryptedAnswer(StringBuilder answer) {
+        for (int i = 0; i < answer.length(); i++) {
+            answer.setCharAt(i, '*');
         }
     }
 
-    public record Win(String text) {}
-
-    public record Defeat(String text) {}
+    public void openWordForUser(Session session, StringBuilder encryptedWord) {
+        HangmanIO hangmanIO = new HangmanIO();
+        if (session.getAnswer().contains(String.valueOf(session.getUserAnswer()))) {
+            hangmanIO.displayMessage(ListUtils.randomWord(WORDS_FOR_SUCCESSFUL_GUESSING));
+            for (int i = 0; i < encryptedWord.length(); i++) {
+                if (session.getAnswer().charAt(i) == session.getUserAnswer()[0]) {
+                    encryptedWord.setCharAt(i, session.getAnswer().charAt(i));
+                }
+            }
+        } else {
+            session.getUserResult().setUserAttempts(session.getUserResult().getUserAttempts() + 1);
+            hangmanIO.displayMessage("Missed, mistake "
+                    + session.getUserResult().getUserAttempts()
+                    + " out of "
+                    + session.getMaxAttempts() + ".");
+        }
+    }
 }

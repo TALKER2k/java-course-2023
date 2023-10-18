@@ -39,4 +39,8 @@ public class Session {
     public @NotNull String getAnswer() {
         return answer;
     }
+
+    public boolean isActiveSession() {
+        return getMaxAttempts() - getUserResult().getUserAttempts() > 0;
+    }
 }

@@ -3,8 +3,10 @@ package edu.project1;
 import static edu.project1.Dictionary.WORDS_FOR_GUESS;
 import static edu.project1.Dictionary.WORDS_FOR_SUCCESSFUL_GUESSING;
 
-final class ConsoleHangman {
+public final class ConsoleHangman {
     private static final int MAX_LENGTH = 50;
+    public static final String RESULT_LOSER = "You lost! :(";
+    public static final String RESULT_WINNER = "You won! :)";
 
     public void run(Session session) {
         HangmanIO hangmanIO = new HangmanIO();
@@ -37,25 +39,28 @@ final class ConsoleHangman {
 
         hangmanIO.displayMessage("The hidden word was - " + session.getAnswer());
 
-        if (encryptedWord.indexOf("*") == -1) {
-            String resultMessage = "You won! :)";
-            session.getUserResult().setResultMessage(resultMessage);
-            hangmanIO.displayMessage(new Win(resultMessage).text());
-        } else {
-            String resultMessage = "You lost! :(";
-            session.getUserResult().setResultMessage(resultMessage);
-            hangmanIO.displayMessage(new Defeat(resultMessage).text());
-        }
+        resultMessage(encryptedWord, session, hangmanIO);
+
         hangmanIO.close();
     }
 
-    public void encryptedAnswer(StringBuilder answer) {
+    private void resultMessage(StringBuilder encryptedWord, Session session, HangmanIO hangmanIO) {
+        if (encryptedWord.indexOf("*") == -1) {
+            session.getUserResult().setResultMessage(RESULT_WINNER);
+            hangmanIO.displayMessage(new Win(RESULT_WINNER).text());
+        } else {
+            session.getUserResult().setResultMessage(RESULT_LOSER);
+            hangmanIO.displayMessage(new Defeat(RESULT_LOSER).text());
+        }
+    }
+
+    private void encryptedAnswer(StringBuilder answer) {
         for (int i = 0; i < answer.length(); i++) {
             answer.setCharAt(i, '*');
         }
     }
 
-    public void openWordForUser(Session session, StringBuilder encryptedWord) {
+    private void openWordForUser(Session session, StringBuilder encryptedWord) {
         HangmanIO hangmanIO = new HangmanIO();
         if (session.getAnswer().contains(String.valueOf(session.getUserAnswer()))) {
             hangmanIO.displayMessage(ListUtils.randomWord(WORDS_FOR_SUCCESSFUL_GUESSING));

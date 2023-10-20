@@ -1,7 +1,11 @@
 package edu.project1;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
+@Getter
+@Setter
 public class Session {
     @NotNull
     private String answer;
@@ -14,30 +18,6 @@ public class Session {
         this.userAnswer = userAnswer;
         this.maxAttempts = maxAttempts;
         this.userResult = userResult;
-    }
-
-    public char[] getUserAnswer() {
-        return userAnswer;
-    }
-
-    public void setUserAnswer(char[] userAnswer) {
-        this.userAnswer = userAnswer;
-    }
-
-    public GuessResult getUserResult() {
-        return userResult;
-    }
-
-    public void setAnswer(@NotNull String answer) {
-        this.answer = answer;
-    }
-
-    public int getMaxAttempts() {
-        return maxAttempts;
-    }
-
-    public @NotNull String getAnswer() {
-        return answer;
     }
 
     public boolean isActiveSession() {

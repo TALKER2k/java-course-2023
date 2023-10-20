@@ -1,12 +1,14 @@
 package edu.project1;
 
+import java.util.Scanner;
+import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.Scanner;
 
+@Getter
 public class HangmanIO {
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -31,9 +33,5 @@ public class HangmanIO {
 
     public void close() {
         scanner.close();
-    }
-
-    public Scanner getScanner() {
-        return scanner;
     }
 }

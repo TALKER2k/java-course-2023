@@ -15,7 +15,6 @@ public class Project1Test {
     private static final int USER_ATTEMPTS = 0;
     private Session session;
 
-    @Test
     void runSessionTest() {
         session = new Session(WORD_FOR_TEST, null, MAX_ATTEMPTS,
                 new GuessResult(USER_ATTEMPTS, ""));

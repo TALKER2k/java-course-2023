@@ -12,7 +12,7 @@ public class FaultyConnection implements Connection {
     public void execute(String command) throws ConnectionException {
         LOGGER.info("Execute command: " + command + " is FaultyConnection");
         if (throwConnectionException()) {
-            throw new ConnectionException();
+            throw new ConnectionException("Connection Exception");
         }
     }
 

@@ -30,6 +30,6 @@ public class PopularCommandExecutor {
                 LOGGER.info(e);
             }
         }
-        throw new ConnectionException();
+        throw new ConnectionException("Connection Exception");
     }
 }

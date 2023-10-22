@@ -13,7 +13,5 @@ public class StableConnection implements Connection {
     }
 
     @Override
-    public void close() throws Exception {
-
-    }
+    public void close() {}
 }

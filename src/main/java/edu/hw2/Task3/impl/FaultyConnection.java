@@ -11,6 +11,14 @@ public class FaultyConnection implements Connection {
     @Override
     public void execute(String command) throws ConnectionException {
         LOGGER.info("Execute command: " + command + " is FaultyConnection");
+        if (throwConnectionException()) {
+            throw new ConnectionException();
+        }
+    }
+
+    private boolean throwConnectionException() {
+        final double probability = 0.10;
+        return Math.random() < probability;
     }
 
     @Override

@@ -6,6 +6,10 @@ import org.junit.jupiter.params.provider.MethodSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task2Test {
+    private static final int WIDTH_SIDE = 20;
+    private static final int HEIGHT_SIDE = 10;
+    private static final double AREA = 200.0;
+
     static Arguments[] rectangles() {
         return new Arguments[]{
                 Arguments.of(new Task2.Rectangle()),
@@ -13,12 +17,11 @@ public class Task2Test {
         };
     }
 
-    @SuppressWarnings("checkstyle:MagicNumber")
     @ParameterizedTest
     @MethodSource("rectangles")
     void rectangleArea(Task2.Rectangle rect) {
-        Task2.Rectangle resultRect = rect.setWidth(20);
-        resultRect = resultRect.setHeight(10);
-        assertThat(resultRect.area()).isEqualTo(200.0);
+        Task2.Rectangle resultRect = rect.setWidth(WIDTH_SIDE);
+        resultRect = resultRect.setHeight(HEIGHT_SIDE);
+        assertThat(resultRect.area()).isEqualTo(AREA);
     }
 }

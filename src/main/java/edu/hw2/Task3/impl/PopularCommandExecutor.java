@@ -24,10 +24,7 @@ public class PopularCommandExecutor {
     public void tryExecute(String command) {
         for (int i = 0; i < maxAttempts; i++) {
             try (Connection connection = manager.getConnection()) {
-                if (connection instanceof StableConnection) {
-                    connection.execute(command);
-                    return;
-                }
+                connection.execute(command);
             } catch (Exception e) {
                 LOGGER.info(e);
             }

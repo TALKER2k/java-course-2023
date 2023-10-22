@@ -22,14 +22,6 @@ public final class Task2 {
             return new Rectangle(width, height);
         }
 
-        public int getWidth() {
-            return width;
-        }
-
-        public int getHeight() {
-            return height;
-        }
-
         double area() {
             return width * height;
         }
@@ -37,15 +29,5 @@ public final class Task2 {
 
     public static class Square extends Rectangle {
         public Square() {}
-
-        @Override
-        public Rectangle setHeight(int height) {
-            return new Rectangle(getWidth(), height);
-        }
-
-        @Override
-        public Rectangle setWidth(int width) {
-            return new Rectangle(width, getHeight());
-        }
     }
 }

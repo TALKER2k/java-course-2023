@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Task3Test {
 
     @Test
-    void checkDefaultConnectionManagerGetConnection() {
+    void checkDefaultConnectionManagerGetConnectionTest() {
         ConnectionManager connectionManager = new DefaultConnectionManager();
 
         Connection connection = connectionManager.getConnection();
@@ -24,7 +24,7 @@ public class Task3Test {
     }
 
     @Test
-    void checkFaultyConnectionManagerGetConnection() {
+    void checkFaultyConnectionManagerGetConnectionTest() {
         ConnectionManager connectionManager = new FaultyConnectionManager();
 
         Connection connection = connectionManager.getConnection();
@@ -33,7 +33,7 @@ public class Task3Test {
     }
 
     @Test
-    void checkPopularCommandExecutor() {
+    void checkPopularCommandExecutorTest() {
         ConnectionManager manager = new FaultyConnectionManager();
         final int maxAttempts = 3;
         Connection connection = manager.getConnection();
@@ -45,7 +45,7 @@ public class Task3Test {
     }
 
     @Test
-    void testConnectionExceptionMessage() {
+    void checkConnectionExceptionMessageTest() {
         String expectedMessage = "Connection Exception";
         ConnectionException exception = new ConnectionException(expectedMessage);
 
@@ -53,7 +53,7 @@ public class Task3Test {
     }
 
     @Test
-    public void testExecute() {
+    void checkStableConnectionTest() {
         StableConnection connection = new StableConnection();
 
         connection.execute("apt update && apt upgrade -y");

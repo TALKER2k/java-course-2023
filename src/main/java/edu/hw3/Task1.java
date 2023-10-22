@@ -1,6 +1,5 @@
 package edu.hw3;
 
-
 public final class Task1 {
     private Task1() {}
 

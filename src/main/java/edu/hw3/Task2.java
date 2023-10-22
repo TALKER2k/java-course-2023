@@ -1,34 +1,35 @@
 package edu.hw3;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public final class Task2 {
     private Task2() {}
 
-    private  static  final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public static List<String> clusterize(String brackets) {
-        int openBracket = 0, closeBracket = 0, i = 0;
-        StringBuilder bracketsCopy = new StringBuilder(brackets);
+        if (brackets == null) {
+            LOGGER.info("Brackets string is NULL");
+            return new ArrayList<>();
+        }
+        int openBracket = 0;
+        int closeBracket = 0;
         List<String> listCluster = new ArrayList<>();
-        while (i < bracketsCopy.length()) {
-            if (bracketsCopy.charAt(i) == '(') {
+        for (int i = 0, j = 0; i < brackets.length(); i++) {
+
+            if (brackets.charAt(i) == '(') {
                 openBracket++;
             } else {
                 closeBracket++;
             }
 
             if (openBracket == closeBracket) {
-                listCluster.add(bracketsCopy.substring(0, i + 1));
-                bracketsCopy.delete(0, i);
-                i = -1;
+                listCluster.add(brackets.substring(j, i + 1));
+                j = i + 1;
             }
-
-            i++;
         }
 
         return listCluster;

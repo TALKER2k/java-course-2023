@@ -15,7 +15,7 @@ public final class Task5 {
             temp = reverseNumber(temp);
             while (temp > 0) {
                 int num = temp % 10 + temp / 10 % 10;
-                sum = sum * 10 + num;
+                sum = (num > 9) ? sum * 100 + num : sum * 10 + num;
                 temp /= 100;
             }
             temp = sum;

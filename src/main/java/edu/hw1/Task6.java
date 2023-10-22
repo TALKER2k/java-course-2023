@@ -18,7 +18,6 @@ public final class Task6 {
         return 1 + countK(descendingMinusAscendingNumbers(number));
     }
 
-    @SuppressWarnings("checkstyle:MagicNumber")
     private static int descendingMinusAscendingNumbers(int number) {
         StringBuilder result = new StringBuilder();
         String numberStr = Integer.toString(number);

@@ -12,7 +12,7 @@ public final class Task4 {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final int MAX_NUMBER = 3999;
 
-    public static final Map<Integer, String> ROMAN_NUMBERS = new LinkedHashMap<>();
+    private static final Map<Integer, String> ROMAN_NUMBERS = new LinkedHashMap<>();
 
     static {
         ROMAN_NUMBERS.put(1000, "M");

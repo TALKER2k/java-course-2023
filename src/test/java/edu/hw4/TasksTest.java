@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -34,6 +35,16 @@ public class TasksTest {
             3,
             1,
             1,
+            true
+    );
+
+    private static final Animal SPIDER_BROTHER = new Animal(
+            "brother",
+            Animal.Type.SPIDER,
+            Animal.Sex.F,
+            6,
+            3,
+            5,
             true
     );
 
@@ -97,5 +108,62 @@ public class TasksTest {
         largestSex = tasks.findLargestSex(animals);
 
         assertThat(Animal.Sex.F).isEqualTo(largestSex);
+    }
+
+    @Test
+    void heaviestAnimalEveryTypeTest() {
+        List<Animal> animals = new ArrayList<>(List.of(SPIDER_BROTHER, CAT, DOG, SPIDER));
+        Map<Animal.Type, Animal> result = new HashMap<>(Map.of(
+                Animal.Type.DOG, DOG,
+                Animal.Type.SPIDER, SPIDER_BROTHER,
+                Animal.Type.CAT, CAT
+        ));
+        Map<Animal.Type, Animal> resultHeaviesAnimals;
+
+        resultHeaviesAnimals = tasks.heaviestAnimalEveryType(animals);
+
+        assertThat(result).isEqualTo(resultHeaviesAnimals);
+    }
+
+    @Test
+    void oldestAnimalTest() {
+        List<Animal> animals = new ArrayList<>(List.of(SPIDER, CAT, SPIDER_BROTHER, DOG));
+        Animal oldestAnimal;
+
+        oldestAnimal = tasks.oldestAnimal(animals);
+
+        assertThat(SPIDER_BROTHER).isEqualTo(oldestAnimal);
+    }
+
+    @Test
+    void heaviestAnimalBelowSomeSmTest() {
+        List<Animal> animals = new ArrayList<>(List.of(SPIDER, CAT, SPIDER_BROTHER, DOG));
+        final int k = 4;
+        Optional<Animal> heaviestAnimal;
+
+        heaviestAnimal = tasks.heaviestAnimalBelowSomeSm(animals, k);
+
+        assertThat(Optional.of(CAT)).isEqualTo(heaviestAnimal);
+    }
+
+    @Test
+    void countPawsAllTest() {
+        List<Animal> animals = new ArrayList<>(List.of(SPIDER, CAT, SPIDER_BROTHER, DOG));
+        final int pawsAll = 24;
+        Integer countPaws;
+
+        countPaws = tasks.countPawsAll(animals);
+
+        assertThat(pawsAll).isEqualTo(countPaws);
+    }
+
+    @Test
+    void ageNotMatchWithPawsTest() {
+        List<Animal> animals = new ArrayList<>(List.of(SPIDER, CAT, SPIDER_BROTHER, DOG));
+        List<Animal> ageNotMatchWithPaws;
+
+        ageNotMatchWithPaws = tasks.ageNotMatchWithPaws(animals);
+
+        assertThat(List.of(SPIDER, CAT, SPIDER_BROTHER)).isEqualTo(ageNotMatchWithPaws);
     }
 }

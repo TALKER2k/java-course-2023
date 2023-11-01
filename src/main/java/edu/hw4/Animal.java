@@ -9,6 +9,7 @@ public record Animal(
         int weight,
         boolean bites
 ) {
+
     public enum Type {
         CAT, DOG, BIRD, FISH, SPIDER
     }

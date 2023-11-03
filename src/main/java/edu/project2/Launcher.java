@@ -9,23 +9,21 @@ import edu.project2.interfaces.Solver;
 import edu.project2.models.Cell;
 import edu.project2.models.Coordinate;
 import edu.project2.models.Maze;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Launcher {
-    final int height = 25;
-    final int width = 35;
+    public static final int HEIGHT = 35;
+    public static final int WIDTH = 55;
     Maze maze;
-    Generator generator = new GeneratorImpl(height, width);
+    Generator generator = new GeneratorImpl(HEIGHT, WIDTH);
     Renderer renderer = new RenderImpl();
     Solver solver = new SolverImpl();
     Random random = new Random();
 
     @SuppressWarnings("checkstyle:RegexpSinglelineJava")
     public void run() {
-        maze = generator.generate(height, width);
+        maze = generator.generate(HEIGHT, WIDTH);
         System.out.println(renderer.render(maze));
         List<Coordinate> listCoordinate = solver.solve(maze, generateCoordinate(maze), generateCoordinate(maze));
         System.out.println(renderer.render(maze, listCoordinate));
@@ -33,8 +31,8 @@ public class Launcher {
     }
 
     private Coordinate generateCoordinate(Maze maze) {
-        final int x = random.nextInt(height);
-        final int y = random.nextInt(width);
+        final int x = random.nextInt(HEIGHT);
+        final int y = random.nextInt(WIDTH);
         return (maze.grid()[x][y].getType() == Cell.Type.PASSAGE ? new Coordinate(x, y) : generateCoordinate(maze));
     }
 }

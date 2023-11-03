@@ -2,7 +2,6 @@ package edu.project2.interfaces;
 
 import edu.project2.models.Coordinate;
 import edu.project2.models.Maze;
-
 import java.util.List;
 
 public interface Renderer {

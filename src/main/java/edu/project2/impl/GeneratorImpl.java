@@ -1,9 +1,8 @@
 package edu.project2.impl;
 
-import edu.project2.models.Cell;
 import edu.project2.interfaces.Generator;
+import edu.project2.models.Cell;
 import edu.project2.models.Maze;
-
 import java.util.Random;
 import java.util.Stack;
 
@@ -56,7 +55,8 @@ public class GeneratorImpl implements Generator {
     }
 
     private Cell[] getUnvisitedNeighbors(int row, int col) {
-        Cell[] neighbors = new Cell[4];
+        final int four = 4;
+        Cell[] neighbors = new Cell[four];
         int count = 0;
         if (row >= 2 && grid[row - 2][col].getType() == Cell.Type.WALL) {
             neighbors[count++] = grid[row - 2][col];

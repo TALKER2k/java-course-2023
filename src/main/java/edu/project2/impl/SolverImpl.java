@@ -54,7 +54,7 @@ public class SolverImpl implements Solver {
         }
 
         if (shortestPath[t.row()][t.col()] == Integer.MAX_VALUE) {
-            return null; // Путь не найден
+            return null;
         }
 
         List<Coordinate> shortPath = new ArrayList<>();
@@ -65,9 +65,9 @@ public class SolverImpl implements Solver {
             current = parent[current.row()][current.col()];
         }
 
-        shortPath.add(s); // Добавляем начальную точку
+        shortPath.add(s);
 
-        Collections.reverse(shortPath); // Переворачиваем путь, чтобы начинать с s
+        Collections.reverse(shortPath);
 
         return shortPath;
     }

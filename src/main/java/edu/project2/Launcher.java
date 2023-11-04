@@ -27,7 +27,6 @@ public class Launcher {
         System.out.println(renderer.render(maze));
         List<Coordinate> listCoordinate = solver.solve(maze, generateCoordinate(maze), generateCoordinate(maze));
         System.out.println(renderer.render(maze, listCoordinate));
-        System.out.println(listCoordinate);
     }
 
     private Coordinate generateCoordinate(Maze maze) {

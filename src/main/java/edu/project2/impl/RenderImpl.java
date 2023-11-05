@@ -11,6 +11,7 @@ public class RenderImpl implements Renderer {
     @Override
     public StringBuilder render(Maze maze) {
         StringBuilder outputMaze = new StringBuilder();
+
         for (int i = 0; i < maze.height(); i++) {
             for (int j = 0; j < maze.width(); j++) {
                 if (maze.grid()[i][j].getType() == Cell.Type.WALL) {
@@ -20,10 +21,13 @@ public class RenderImpl implements Renderer {
                 } else {
                     outputMaze.append(" ");
                 }
+
                 outputMaze.append(" ");
             }
+
             outputMaze.append("\n");
         }
+
         return outputMaze;
     }
 
@@ -46,6 +50,7 @@ public class RenderImpl implements Renderer {
                 if (outputMaze.contains(i + "," + j)) {
                     mazeExp.grid()[i][j].setType(Cell.Type.PATH);
                 }
+
                 k++;
             }
         }

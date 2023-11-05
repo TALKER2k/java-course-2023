@@ -11,8 +11,9 @@ import java.util.List;
 import java.util.Queue;
 
 public class SolverImpl implements Solver {
+
     //поиск в ширину
-    public List<Coordinate> bfs(Coordinate s, Coordinate t, Maze maze) {
+    private List<Coordinate> bfs(Coordinate s, Coordinate t, Maze maze) {
         int height = maze.height();
         int width = maze.width();
         boolean[][] isFreeCell = new boolean[height][width];
@@ -39,7 +40,9 @@ public class SolverImpl implements Solver {
             if (current.equals(t)) {
                 break;
             }
+
             final int four = 4;
+
             for (int i = 0; i < four; i++) {
                 int edgeRow = current.row() + dx[i];
                 int edgeCol = current.col() + dy[i];

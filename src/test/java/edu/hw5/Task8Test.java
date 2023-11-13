@@ -10,7 +10,7 @@ public class Task8Test {
     public void testCheck0() {
         Task8 task = new Task8();
 
-        String string1 = "01234";
+        String string1 = "01100";
         assertTrue(task.check0(string1));
 
         String string2 = "0111";

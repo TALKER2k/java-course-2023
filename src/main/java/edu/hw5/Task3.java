@@ -7,7 +7,24 @@ import java.util.Optional;
 public class Task3 {
 
     public Optional<LocalDate> parseDate(String line) {
-        return parseDashDate(line);
+        Optional<LocalDate> date = parseOneWordDate(line);
+        if (date.isPresent()) {
+            return date;
+        }
+
+        date = parseDashDate(line);
+        if (date.isPresent()) {
+            return date;
+        }
+
+        date = parseNDaysAgo(line);
+        if (date.isPresent()) {
+            return date;
+        }
+
+        date = parseSlashDate(line);
+
+        return date;
     }
 
     private Optional<LocalDate> parseDashDate(String line) {
